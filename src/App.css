@@ -1,3 +1,10 @@
+body {
+    background: url("https://resi.ze-robot.com/dl/4k/4k-desktop-wallpaper.-2560%C3%971080.jpg") center no-repeat;
+    background-size: cover;
+    height: 100vh;
+    color: #eee6e6;
+}
+
 .App {
     padding: 30px;
     display: flex;
@@ -8,7 +15,7 @@
 }
 
 .is-done {
-    opacity: 0.5;
+    opacity: 0.8;
     text-decoration: line-through;
 }
 
@@ -20,6 +27,19 @@
     outline: transparent;
     border: 2px solid red;
 }
-.error-message{
+
+.error-message {
     color: red;
+}
+
+.removeTodoListButton {
+    cursor: pointer;
+    margin-left: 10px;
+    background-color: #7acd75;
+    border-radius: 4px;
+}
+
+.removeTodoListButton:hover {
+    transition: 0.5s;
+    background-color: #a7fda3;
 }
