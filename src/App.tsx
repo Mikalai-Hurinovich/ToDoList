@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import TodoList from "./TodoList";
 import {v1} from "uuid";
+import AddItemForm from "./AddItemForm";
 
 export type TaskType = {
     id: string
@@ -48,18 +49,15 @@ const App = () => {
         ],
     })
 
-
     function removeTask(taskID: string, TodoListID: string) {
         tasks[TodoListID] = tasks[TodoListID].filter(el => el.id !== taskID)
         setTasks({...tasks})
     }
-
     function addTasks(taskTitle: string, TodoListID: string) {
         let newTask: TaskType = {id: v1(), title: taskTitle, isDone: false}
         tasks[TodoListID] = [newTask, ...tasks[TodoListID]]
         setTasks({...tasks})
     }
-
     function changeTaskStatus(taskId: string, newIsDoneValue: boolean, TodoListID: string) {
         const task = tasks[TodoListID].find(t => t.id === taskId)
         // Проверка на то, что в таск не попало случайно значение типа false -> undefined, null , 0, '', NaN
@@ -69,11 +67,27 @@ const App = () => {
             setTasks({...tasks})
         }
     }
-
+    function changeTaskTitle(taskId: string, newTitle: string, TodoListID: string) {
+        const task = tasks[TodoListID].find(t => t.id === taskId)
+        // Проверка на то, что в таск не попало случайно значение типа false -> undefined, null , 0, '', NaN
+        if (task) {
+            task.title = newTitle
+            //разворачиваем массив, сравниваем поверхностную копию с ориг. массивом, и реакт понимает что надо изменить
+            setTasks({...tasks})
+        }
+    }
     function changeFilter(newFilterValue: FilterValuesType, TodoListID: string) {
         const todoList = todoLists.find(el => el.id === TodoListID)
         if (todoList) {
             todoList.filter = newFilterValue
+            setTodoLists([...todoLists])
+        }
+
+    }
+    function changeTodoListTitle(newTitle:string, TodoListID: string) {
+        const todoList = todoLists.find(el => el.id === TodoListID)
+        if (todoList) {
+            todoList.title = newTitle
             setTodoLists([...todoLists])
         }
 
@@ -93,25 +107,30 @@ const App = () => {
     }
 
     //UI
-    //CRUD: create read update delete - список простейших действий, которые можно выполнить с данными
+    //CRUD: create, read, update, delete - список простейших действий, которые можно выполнить с данными
     const todoListComponents = todoLists.map(tl => {
         let tasksForTodoList = tasks[tl.id]
         if (tl.filter === 'active') tasksForTodoList = tasksForTodoList.filter(el => !el.isDone)
         if (tl.filter === 'completed') tasksForTodoList = tasksForTodoList.filter(el => el.isDone)
-        return (<TodoList
-            todoListID={tl.id}
-            changeTaskStatus={changeTaskStatus}
-            title={tl.title}
-            filter={tl.filter}
-            tasks={tasksForTodoList}
-            removeTask={removeTask}
-            changeTodoListFilter={changeFilter}
-            addTasks={addTasks}
-            removeTodoList={removeTodoList}
-        />)
+        return (
+            <TodoList
+                changeTaskTitle={changeTaskTitle}
+                todoListID={tl.id}
+                changeTaskStatus={changeTaskStatus}
+                title={tl.title}
+                filter={tl.filter}
+                tasks={tasksForTodoList}
+                removeTask={removeTask}
+                changeTodoListFilter={changeFilter}
+                addTasks={addTasks}
+                removeTodoList={removeTodoList}
+                changeTodoListTitle={changeTodoListTitle}
+            />
+        )
     })
     return (
         <div className="App">
+            <AddItemForm addItem={addTodoList}/>
             {todoListComponents}
         </div>
     );
