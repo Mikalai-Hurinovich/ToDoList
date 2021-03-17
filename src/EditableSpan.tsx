@@ -24,7 +24,6 @@ const EditableSpan = (props: EditableSpanPropsType) => {
         }
     }
     return (
-//
         editMode
             ? <input
                 value={title}
