@@ -64,7 +64,7 @@ function TodoList(props: TodoListPropsType) {
             <ul style={{listStyle: "none", paddingLeft: '0'}}>
                 {tasks}
             </ul>
-            <div>
+            <div style={{display: 'flex', justifyContent: 'space-around'}}>
                 <Button
                     variant={'contained'}
                     color={props.filter === 'all' ? 'secondary' : 'primary'}

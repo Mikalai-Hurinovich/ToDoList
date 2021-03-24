@@ -14,7 +14,7 @@ export type TaskType = {
 
 export type FilterValuesType = 'all' | 'active' | 'completed'
 
-type TodoListType = {
+export type TodoListType = {
     id: string
     title: string
     filter: FilterValuesType
@@ -56,13 +56,11 @@ const App = () => {
         tasks[TodoListID] = tasks[TodoListID].filter(el => el.id !== taskID)
         setTasks({...tasks})
     }
-
     function addTasks(taskTitle: string, TodoListID: string) {
         let newTask: TaskType = {id: v1(), title: taskTitle, isDone: false}
         tasks[TodoListID] = [newTask, ...tasks[TodoListID]]
         setTasks({...tasks})
     }
-
     function changeTaskStatus(taskId: string, newIsDoneValue: boolean, TodoListID: string) {
         const task = tasks[TodoListID].find(t => t.id === taskId)
         // Проверка на то, что в таск не попало случайно значение типа false -> undefined, null , 0, '', NaN
@@ -72,7 +70,6 @@ const App = () => {
             setTasks({...tasks})
         }
     }
-
     function changeTaskTitle(taskId: string, newTitle: string, TodoListID: string) {
         const task = tasks[TodoListID].find(t => t.id === taskId)
         // Проверка на то, что в таск не попало случайно значение типа false -> undefined, null , 0, '', NaN
@@ -82,7 +79,6 @@ const App = () => {
             setTasks({...tasks})
         }
     }
-
     function changeFilter(newFilterValue: FilterValuesType, TodoListID: string) {
         const todoList = todoLists.find(el => el.id === TodoListID)
         if (todoList) {
@@ -91,22 +87,18 @@ const App = () => {
         }
 
     }
-
     function changeTodoListTitle(newTitle: string, TodoListID: string) {
         const todoList = todoLists.find(el => el.id === TodoListID)
         if (todoList) {
             todoList.title = newTitle
             setTodoLists([...todoLists])
         }
-
     }
-
     function removeTodoList(todoListID: string) {
         setTodoLists(todoLists.filter(tl => tl.id !== todoListID))
         delete tasks[todoListID]
         setTasks({...tasks})
     }
-
     function addTodoList(title: string) {
         const newTodoListID = v1()
         const newTodoList: TodoListType = {id: newTodoListID, title: title, filter: "all"}
