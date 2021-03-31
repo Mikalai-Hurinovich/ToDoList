@@ -1,13 +1,14 @@
 import {FilterValuesType, TodoListType} from "../App";
 import {v1} from "uuid";
 
-type RemoveTodolistActionType = {
+export type RemoveTodolistActionType = {
     type: 'REMOVE-TODOLIST'
     id: string
 }
-type AddTodolistActionType = {
+export type AddTodolistActionType = {
     type: 'ADD-TODOLIST'
     title: string
+    todoListId: string
 }
 type ChangeTodolistTitleActionType = {
     type: 'CHANGE-TODOLIST-TITLE'
@@ -31,7 +32,7 @@ export const todoListReducer = (todoLists: Array<TodoListType>, action: ActionTy
             return todoLists.filter(tl => tl.id !== action.id);
         case 'ADD-TODOLIST':
             const newTodoListID = v1()
-            const newTodoList: TodoListType = {id: newTodoListID, title: action.title, filter: "all"}
+            const newTodoList: TodoListType = {id: action.todoListId, title: action.title, filter: "all"}
             return [...todoLists, newTodoList]
         case 'CHANGE-TODOLIST-TITLE':
             const todoList = todoLists.find(tl => tl.id === action.id)
@@ -58,7 +59,7 @@ export const RemoveTodolistAC = (id: string): RemoveTodolistActionType => {
     return {type: 'REMOVE-TODOLIST', id}
 }
 export const AddTodoListAC = (title: string): AddTodolistActionType => {
-    return {type: 'ADD-TODOLIST', title}
+    return {type: 'ADD-TODOLIST', title, todoListId: v1()}
 }
 export const FilterTodoListAC = (newFilterValue: FilterValuesType, id: string): ChangeTodolistFilterActionType => {
     // можем не писать newFilterValue: newFilterValue, тк названия одинаковы
