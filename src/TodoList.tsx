@@ -22,9 +22,7 @@ type TodoListPropsType = {
 
 
 function TodoList(props: TodoListPropsType) {
-
     const addTask = (title: string) => props.addTasks(title, props.todoListID)
-
     const all = () => props.changeTodoListFilter('all', props.todoListID)
     const active = () => props.changeTodoListFilter('active', props.todoListID)
     const completed = () => props.changeTodoListFilter('completed', props.todoListID)
