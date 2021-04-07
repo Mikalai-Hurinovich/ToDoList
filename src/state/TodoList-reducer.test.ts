@@ -21,7 +21,6 @@ beforeEach(() => {
     ]
 });
 test('correct todolist should be removed', () => {
-
     const endState = todoListReducer(startState, RemoveTodolistAC(todolistId1))
 
     expect(endState.length).toBe(1);
