@@ -131,7 +131,7 @@ const AppWithRedux = () => {
                         <Menu/>
                     </IconButton>
                     <Typography variant={'h6'}>
-                        Todolist Menu
+                        Todolist
                     </Typography>
                     <Button color={'inherit'}></Button>
                 </Toolbar>
