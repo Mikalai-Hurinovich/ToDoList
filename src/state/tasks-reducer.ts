@@ -1,6 +1,6 @@
 import {TaskStateType, TaskType} from "../App";
 import {v1} from "uuid";
-import {AddTodolistActionType, RemoveTodolistActionType} from "./TodoList-reducer";
+import {AddTodolistActionType, RemoveTodolistActionType, todoListId_1, todoListId_2} from "./todoList-reducer";
 
 export type RemoveTaskActionType = {
     type: 'REMOVE-TASK'
@@ -33,7 +33,25 @@ type ActionType = RemoveTaskActionType
     | AddTodolistActionType
     | RemoveTodolistActionType
 
-export const taskReducer = (state: TaskStateType, action: ActionType) => {
+let initialState: TaskStateType = {
+    [todoListId_1]: [
+        {id: v1(), title: 'Кинг', isDone: true},
+        {id: v1(), title: 'Булгаков', isDone: false},
+        {id: v1(), title: 'Ремарк', isDone: true},
+        {id: v1(), title: 'Достоевский', isDone: false},
+        {id: v1(), title: 'Пушкин', isDone: true},
+        {id: v1(), title: 'Фицжеральд', isDone: false},
+    ],
+    [todoListId_2]: [
+        {id: v1(), title: 'Milk', isDone: false},
+        {id: v1(), title: 'Bread', isDone: true},
+        {id: v1(), title: 'Cheese', isDone: false},
+        {id: v1(), title: 'Egg', isDone: false},
+        {id: v1(), title: 'Salad', isDone: false},
+        {id: v1(), title: 'Salmon', isDone: false},
+    ],
+}
+export const taskReducer = (state: TaskStateType = initialState, action: ActionType) => {
     switch (action.type) {
         case 'REMOVE-TASK': {
             let copyState = {...state}
@@ -78,9 +96,11 @@ export const taskReducer = (state: TaskStateType, action: ActionType) => {
             return copyState
         }
         default:
-            throw new Error('I dont know this type');
+            return state;
     }
 }
+
+
 // Создаем Action Creator, чтобы была возможность проводить манипуляции с данными action, например вызывать
 // console.log, сделать проверку и тд
 export const removeTaskAC = (id: string, todoListId: string): RemoveTaskActionType => {

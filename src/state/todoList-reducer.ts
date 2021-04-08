@@ -26,33 +26,42 @@ type ActionType = RemoveTodolistActionType | AddTodolistActionType |
     ChangeTodolistTitleActionType |
     ChangeTodolistFilterActionType
 
-export const todoListReducer = (todoLists: Array<TodoListType>, action: ActionType) => {
+export const todoListId_1 = v1()
+export const todoListId_2 = v1()
+let initialState: Array<TodoListType> = [
+    {id: todoListId_1, title: 'What to Read', filter: 'all'},
+    {id: todoListId_2, title: 'What to Buy', filter: 'all'},
+]
+export const todoListReducer = (state: TodoListType[] = initialState, action: ActionType) => {
+    debugger
     switch (action.type) {
-        case "REMOVE-TODOLIST":
-            return todoLists.filter(tl => tl.id !== action.id);
-        case 'ADD-TODOLIST':
+        case "REMOVE-TODOLIST": {
+            return state.filter(tl => tl.id !== action.id);
+        }
+        case 'ADD-TODOLIST': {
             const newTodoListID = v1()
             const newTodoList: TodoListType = {id: action.todoListId, title: action.title, filter: "all"}
-            return [...todoLists, newTodoList]
-        case 'CHANGE-TODOLIST-TITLE':
-            const todoList = todoLists.find(tl => tl.id === action.id)
+            return [...state, newTodoList]
+        }
+        case 'CHANGE-TODOLIST-TITLE': {
+            const todoList = state.find(tl => tl.id === action.id)
             if (todoList) {
                 todoList.title = action.newTitle
-                return [...todoLists]
             }
-            return todoLists
+            return [...state]
+        }
         case 'CHANGE-TODOLIST-FILTER': {
-            const todoList = todoLists.find(tl => tl.id === action.id)
+            const todoList = state.find(tl => tl.id === action.id)
             if (todoList) {
                 todoList.filter = action.newFilterValue
-                return [...todoLists]
             }
-            return todoLists
+            return [...state]
         }
         default:
-            return todoLists;
+            return state;
     }
 }
+
 // Создаем Action Creator, чтобы была возможность проводить манипуляции с данными action, например вызывать
 // console.log, сделать проверку и тд
 export const RemoveTodolistAC = (id: string): RemoveTodolistActionType => {

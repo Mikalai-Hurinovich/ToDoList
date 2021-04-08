@@ -7,7 +7,7 @@ import {
     AddTodolistAC
 } from './tasks-reducer';
 import {TaskStateType} from '../App';
-import {RemoveTodolistAC} from "./TodoList-reducer";
+import {RemoveTodolistAC} from "./todoList-reducer";
 
 let startState: TaskStateType;
 beforeEach(() => {
