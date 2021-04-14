@@ -6,7 +6,7 @@ type AddItemFormPropsType = {
     addItem: (title: string) => void
 }
 
-const AddItemForm = (props: AddItemFormPropsType) => {
+const AddItemForm = React.memo((props: AddItemFormPropsType) => {
     let [title, setTitle] = useState<string>('')
     const [error, setError] = useState<boolean>(false)
 
@@ -18,7 +18,6 @@ const AddItemForm = (props: AddItemFormPropsType) => {
         if (event.key === 'Enter') addItem()
     }
     const addItem = () => {
-
         const trimmedTitle = title.trim();
         if (trimmedTitle) {
             props.addItem(trimmedTitle)
@@ -45,6 +44,6 @@ const AddItemForm = (props: AddItemFormPropsType) => {
             </IconButton>
         </div>
     )
-}
+})
 
 export default AddItemForm;

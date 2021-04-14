@@ -33,13 +33,12 @@ let initialState: Array<TodoListType> = [
     {id: todoListId_2, title: 'What to Buy', filter: 'all'},
 ]
 export const todoListReducer = (state: TodoListType[] = initialState, action: ActionType) => {
-    debugger
     switch (action.type) {
         case "REMOVE-TODOLIST": {
             return state.filter(tl => tl.id !== action.id);
         }
         case 'ADD-TODOLIST': {
-            const newTodoListID = v1()
+            // const newTodoListID = v1()
             const newTodoList: TodoListType = {id: action.todoListId, title: action.title, filter: "all"}
             return [...state, newTodoList]
         }

@@ -28,6 +28,7 @@ const App = () => {
     // BLL: Business Logic Layer
     const todoListId_1 = v1()
     const todoListId_2 = v1()
+
     const [todoLists, setTodoLists] = useState<Array<TodoListType>>([
         {id: todoListId_1, title: 'What to Read', filter: 'all'},
         {id: todoListId_2, title: 'What to Buy', filter: 'all'},
@@ -52,18 +53,18 @@ const App = () => {
         ],
     })
 
-    function removeTask(taskID: string, TodoListID: string) {
+    const removeTask = (taskID: string, TodoListID: string) => {
         tasks[TodoListID] = tasks[TodoListID].filter(el => el.id !== taskID)
         setTasks({...tasks})
     }
 
-    function addTasks(taskTitle: string, TodoListID: string) {
+    const addTasks = (taskTitle: string, TodoListID: string) => {
         let newTask: TaskType = {id: v1(), title: taskTitle, isDone: false}
         tasks[TodoListID] = [newTask, ...tasks[TodoListID]]
         setTasks({...tasks})
     }
 
-    function changeTaskStatus(taskId: string, newIsDoneValue: boolean, TodoListID: string) {
+    const changeTaskStatus = (taskId: string, newIsDoneValue: boolean, TodoListID: string) => {
         const task = tasks[TodoListID].find(t => t.id === taskId)
         // Проверка на то, что в таск не попало случайно значение типа false -> undefined, null , 0, '', NaN
         if (task) {
@@ -73,7 +74,7 @@ const App = () => {
         }
     }
 
-    function changeTaskTitle(taskId: string, newTitle: string, TodoListID: string) {
+    const changeTaskTitle = (taskId: string, newTitle: string, TodoListID: string) => {
         const task = tasks[TodoListID].find(t => t.id === taskId)
         // Проверка на то, что в таск не попало случайно значение типа false -> undefined, null , 0, '', NaN
         if (task) {
@@ -83,7 +84,7 @@ const App = () => {
         }
     }
 
-    function changeFilter(newFilterValue: FilterValuesType, TodoListID: string) {
+    const changeFilter = (newFilterValue: FilterValuesType, TodoListID: string) => {
         const todoList = todoLists.find(el => el.id === TodoListID)
         if (todoList) {
             todoList.filter = newFilterValue
@@ -92,7 +93,7 @@ const App = () => {
 
     }
 
-    function changeTodoListTitle(newTitle: string, TodoListID: string) {
+    const changeTodoListTitle = (newTitle: string, TodoListID: string) => {
         const todoList = todoLists.find(el => el.id === TodoListID)
         if (todoList) {
             todoList.title = newTitle
@@ -100,13 +101,13 @@ const App = () => {
         }
     }
 
-    function removeTodoList(todoListID: string) {
+    const removeTodoList = (todoListID: string) => {
         setTodoLists(todoLists.filter(tl => tl.id !== todoListID))
         delete tasks[todoListID]
         setTasks({...tasks})
     }
 
-    function addTodoList(title: string) {
+    const addTodoList = (title: string) => {
         const newTodoListID = v1()
         const newTodoList: TodoListType = {id: newTodoListID, title: title, filter: "all"}
         setTodoLists([...todoLists, newTodoList])
