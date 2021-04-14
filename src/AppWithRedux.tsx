@@ -97,6 +97,7 @@ const AppWithRedux = () => {
             <Grid item key={tl.id}>
                 <Paper elevation={6} style={{padding: '30px', marginLeft: '20px', background: '#dff5f8'}}>
                     <TodoList
+                        key={tl.id}
                         changeTaskTitle={changeTaskTitle}
                         todoListID={tl.id}
                         changeTaskStatus={changeTaskStatus}
