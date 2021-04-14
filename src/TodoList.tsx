@@ -27,7 +27,7 @@ const TodoList = React.memo((props: TodoListPropsType) => {
     const all = () => props.changeTodoListFilter('all', props.todoListID)
     const active = () => props.changeTodoListFilter('active', props.todoListID)
     const completed = () => props.changeTodoListFilter('completed', props.todoListID)
-    const removeTodoList = () => props.removeTodoList(props.todoListID)
+    const removeTodoList = useCallback(() => (props.removeTodoList(props.todoListID)), [props])
     const changeTodoListTitle = useCallback((title: string) => props.changeTodoListTitle(title, props.todoListID),
         [props.changeTodoListTitle, props.todoListID])
 
