@@ -1,22 +1,20 @@
 {
   "files": {
-    "main.css": "/ToDoList/static/css/main.fd830398.chunk.css",
-    "main.js": "/ToDoList/static/js/main.fd26c7f3.chunk.js",
-    "main.js.map": "/ToDoList/static/js/main.fd26c7f3.chunk.js.map",
-    "runtime-main.js": "/ToDoList/static/js/runtime-main.97949b04.js",
-    "runtime-main.js.map": "/ToDoList/static/js/runtime-main.97949b04.js.map",
-    "static/js/2.b7e8829d.chunk.js": "/ToDoList/static/js/2.b7e8829d.chunk.js",
-    "static/js/2.b7e8829d.chunk.js.map": "/ToDoList/static/js/2.b7e8829d.chunk.js.map",
+    "main.css": "/ToDoList/static/css/main.fd113a2a.chunk.css",
+    "main.js": "/ToDoList/static/js/main.17ddacf0.chunk.js",
+    "main.js.map": "/ToDoList/static/js/main.17ddacf0.chunk.js.map",
+    "runtime-main.js": "/ToDoList/static/js/runtime-main.adb14f82.js",
+    "runtime-main.js.map": "/ToDoList/static/js/runtime-main.adb14f82.js.map",
+    "static/js/2.6fb32857.chunk.js": "/ToDoList/static/js/2.6fb32857.chunk.js",
+    "static/js/2.6fb32857.chunk.js.map": "/ToDoList/static/js/2.6fb32857.chunk.js.map",
     "index.html": "/ToDoList/index.html",
-    "precache-manifest.02c2dbe4cb438d307ba4815a48080d89.js": "/ToDoList/precache-manifest.02c2dbe4cb438d307ba4815a48080d89.js",
-    "service-worker.js": "/ToDoList/service-worker.js",
-    "static/css/main.fd830398.chunk.css.map": "/ToDoList/static/css/main.fd830398.chunk.css.map",
-    "static/js/2.b7e8829d.chunk.js.LICENSE.txt": "/ToDoList/static/js/2.b7e8829d.chunk.js.LICENSE.txt"
+    "static/css/main.fd113a2a.chunk.css.map": "/ToDoList/static/css/main.fd113a2a.chunk.css.map",
+    "static/js/2.6fb32857.chunk.js.LICENSE.txt": "/ToDoList/static/js/2.6fb32857.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.97949b04.js",
-    "static/js/2.b7e8829d.chunk.js",
-    "static/css/main.fd830398.chunk.css",
-    "static/js/main.fd26c7f3.chunk.js"
+    "static/js/runtime-main.adb14f82.js",
+    "static/js/2.6fb32857.chunk.js",
+    "static/css/main.fd113a2a.chunk.css",
+    "static/js/main.17ddacf0.chunk.js"
   ]
 }
