@@ -2,11 +2,13 @@ import React from 'react';
 import {Meta, Story} from "@storybook/react";
 import {action} from "@storybook/addon-actions";
 import Task, {TaskPropsType} from "../Task";
+import {ReduxStoreProviderDecorator} from "./Decorators/ReduxStoreProviderDecorator";
 
 
 export default {
     title: 'TodoList/Task',
     component: Task,
+    decorators: [ReduxStoreProviderDecorator],
     argTypes: {
         backgroundColor: {control: 'color'},
     },
