@@ -6,18 +6,31 @@ const instance = axios.create({
         'API-KEY': 'ba71bc47-1781-4fe9-b781-f4d80c7b2c13'
     }
 })
+// типизация по аналогии с функцией: передаем T как параметры, подставляя {}, как начальное значение
+type CommonResponseType<T = {}> = {
+    resultCode: number
+    messages: [string]
+    fieldsError: [string]
+    data: T
+}
+type TodolistApiType = {
+    id: string
+    addedDate: Date
+    order: number
+    title: string
+}
 
 export const todolistAPI = {
     getTodolist() {
-        return instance.get('todo-lists')
+        return instance.get<TodolistApiType[]>('todo-lists')
     },
     updateTodolist(todoListId: string, title: string) {
-        return instance.put(`todo-lists/${todoListId}`, {title})
+        return instance.put<CommonResponseType>(`todo-lists/${todoListId}`, {title})
     },
     createTodolist(title: string) {
-        return instance.post(`todo-lists`, {title})
+        return instance.post<CommonResponseType<{ item: TodolistApiType }>>(`todo-lists`, {title})
     },
     deleteTodolist(todoListId: string) {
-        return instance.delete(`todo-lists/${todoListId}`)
+        return instance.delete<CommonResponseType>(`todo-lists/${todoListId}`)
     }
 }
