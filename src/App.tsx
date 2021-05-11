@@ -108,7 +108,6 @@ const AppWithRedux = () => {
     }, [dispatch])
 
     const addTodoList = useCallback((title: string) => {
-        debugger
         dispatch(createTodoListTC(title))
     }, [dispatch])
 

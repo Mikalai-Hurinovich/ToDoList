@@ -117,7 +117,6 @@ export const deleteTodoListTC = (todoListId: string) => (dispatch: Dispatch): vo
 export const createTodoListTC = (title: string) => (dispatch: Dispatch): void => {
     todolistAPI.createTodolist(title)
         .then(res => {
-            debugger
             let todo = res.data.data.item
             dispatch(addTodoListAC(todo))
         })
