@@ -1,19 +1,20 @@
 import axios from "axios";
+
 const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.1/',
     withCredentials: true,
     headers: {
-        'API-KEY': 'ba71bc47-1781-4fe9-b781-f4d80c7b2c13'
+        'API-KEY': 'c43d539a-903b-4914-a22c-0ece781ccd2a'
     }
 })
 // типизация по аналогии с функцией: передаем T как параметры, подставляя {}, как начальное значение
-type CommonResponseType<T = {}> = {
+export type CommonResponseType<T = {}> = {
     resultCode: number
     messages: [string]
     fieldsError: [string]
     data: T
 }
-type TodolistApiType = {
+export type TodolistApiType = {
     id: string
     addedDate: Date
     order: number

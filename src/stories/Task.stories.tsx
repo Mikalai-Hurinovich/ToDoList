@@ -28,13 +28,35 @@ const baseArgs = {
 export const TaskIsDoneExample = Template.bind({});
 TaskIsDoneExample.args = {
     ...baseArgs,
-    task: {id: '1', isDone: true, title: 'JS'},
+    task: {
+        id: '1',
+        isDone: true,
+        title: 'JS',
+        status: 0,
+        startDate: '',
+        deadline: '',
+        priority: 1,
+        description: '',
+        todoListId: 'todoListId1',
+        order: 0,
+        addedDate: ''
+    },
     todoListId: 'todoListId1',
 };
 export const TaskIsNotDoneExample = Template.bind({});
 TaskIsNotDoneExample.args = {
     ...baseArgs,
-    task: {id: '1', isDone: false, title: 'JS'},
+    task: {id: '1',
+        isDone: false,
+        title: 'JS',
+        status: 0,
+        startDate: '',
+        deadline: '',
+        priority: 1,
+        description: '',
+        todoListId: 'todoListId2',
+        order: 0,
+        addedDate: ''},
     todoListId: 'todoListId1'
 };
 

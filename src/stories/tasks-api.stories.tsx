@@ -29,15 +29,26 @@ export const CreateTask = () => {
 }
 export const UpdateTask = () => {
     const [state, setState] = useState<any>(null)
-    useEffect(() => {
-        const todoListId = '0a040cde-a064-49c6-ba28-3ad4e48af67f';
-        const taskId = '246ee2b6-400b-43c4-b97f-03c17e1ac949'
-        tasksAPI.updateTasks(todoListId, taskId, '-----Changed Task-----').then(res => {
-            setState(res.data)
-        })
-    }, [])
+    // useEffect(() => {
+    //     const todoListId = '0a040cde-a064-49c6-ba28-3ad4e48af67f';
+    //     const taskId = '246ee2b6-400b-43c4-b97f-03c17e1ac949'
+    //     // const allAppTasks = getState().tasks
+    //     const tasksForCurrentTodo = allAppTasks[todoListId]
+    //     const currentTask = tasksForCurrentTodo.find((t) => t.id === taskId)
+    // tasksAPI.updateTasks(todoListId, taskId, {
+    //     title: currentTask.title,
+    //     status: status,
+    //     deadline: currentTask.deadline,
+    //     description: currentTask.description,
+    //     priority: currentTask.priority,
+    //     startDate: currentTask.startDate
+    // }).then(res => {
+    //     setState(res.data)
+    // })
+// }, []
+// )
 
-    return <div> {JSON.stringify(state)}</div>
+return <div> {JSON.stringify(state)}</div>
 }
 export const DeleteTask = () => {
     const [state, setState] = useState<any>(null)

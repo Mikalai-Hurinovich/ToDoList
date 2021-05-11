@@ -6,8 +6,8 @@ import {
     changeTaskTitleAC,
     AddTodolistAC
 } from './tasks-reducer';
-import {TaskStateType} from '../App';
-import {RemoveTodolistAC} from "./todoList-reducer";
+import {removeTodolistAC} from "./todoList-reducer";
+import {TaskStateType} from "../App";
 
 let startState: TaskStateType;
 beforeEach(() => {
@@ -45,6 +45,7 @@ test('correct task should be deleted from correct array', () => {
 });
 
 test('correct task should be added to correct array', () => {
+    // @ts-ignore
     const action = addTaskAC("juice", "todolistId2");
     const endState = taskReducer(startState, action)
 
@@ -96,7 +97,7 @@ test('new array should be added when new todolist is added', () => {
 
 test('property with todolistId should be deleted', () => {
 
-    const action = RemoveTodolistAC("todolistId2");
+    const action = removeTodolistAC("todolistId2");
 
     const endState = taskReducer(startState, action)
 
