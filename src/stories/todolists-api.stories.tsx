@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {todolistAPI} from "../api/todolist-api";
+import {todolistsAPI} from "../api/todolists-api";
 
 export default {
     title: 'API'
@@ -9,7 +9,7 @@ export const GetTodoLists = () => {
     const [state, setState] = useState<any>(null)
 
     useEffect(() => {
-        todolistAPI.getTodolist().then(res => {
+        todolistsAPI.getTodolists().then(res => {
             setState(res.data)
         })
     }, [])
@@ -19,7 +19,7 @@ export const GetTodoLists = () => {
 export const CreateTodolist = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
-        todolistAPI.createTodolist('<<<<<<New TodoList>>>>>>')
+        todolistsAPI.createTodolist('<<<<<<New TodoList>>>>>>')
             .then(res => {
                 setState(res.data)
             })
@@ -32,7 +32,7 @@ export const DeleteTodolist = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
         const todoListId = '2b91c4ba-1be6-4f68-84a3-7d07de15a465';
-        todolistAPI.deleteTodolist(todoListId).then(res => {
+        todolistsAPI.deleteTodolist(todoListId).then(res => {
             setState(res.data)
         })
 
@@ -43,7 +43,7 @@ export const UpdateTodolistTitle = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
         const todoListId = 'f4df2e1c-7c20-45fd-a8cc-b369264de99c';
-        todolistAPI.updateTodolist(todoListId, 'Best TodoList Ever').then(res => {
+        todolistsAPI.updateTodolist(todoListId, 'Best TodoList Ever').then(res => {
             setState(res.data)
         })
     }, [])

@@ -1,17 +1,17 @@
 import React from 'react';
 import {Meta, Story} from "@storybook/react";
-import AppWithRedux from "../App";
 import {ReduxStoreProviderDecorator} from "./Decorators/ReduxStoreProviderDecorator";
+import App from "../app/App";
 
 
 export default {
-    title: 'TodoList/AppWithRedux',
-    component: AppWithRedux,
+    title: 'TodoList/App',
+    component: App,
     argTypes: {},
     decorators: [ReduxStoreProviderDecorator]
 } as Meta;
 
-const Template: Story = (args) => <AppWithRedux {...args} />
+const Template: Story = (args) => <App {...args} />
 
 export const AppWithReduxExample = Template.bind({});
 AppWithReduxExample.args = {}

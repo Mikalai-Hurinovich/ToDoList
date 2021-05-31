@@ -1,14 +1,14 @@
 import React from 'react';
-import {AppRootStateType} from "../../state/store";
 import {combineReducers, createStore} from "redux";
-import {taskReducer} from "../../state/tasks-reducer";
-import {todoListReducer} from "../../state/todoList-reducer";
 import {Provider} from "react-redux";
+import {AppRootStateType} from "../../app/store";
+import {tasksReducer} from "../../features/TodolistsList/tasks-reducer";
+import {todolistsReducer} from "../../features/TodolistsList/todolists-reducer";
 
 
 const rootReducer = combineReducers({
-    tasks: taskReducer,
-    todoLists: todoListReducer
+    tasks: tasksReducer,
+    todoLists: todolistsReducer
 })
 const initialGlobalState = {
     // todoLists: [
