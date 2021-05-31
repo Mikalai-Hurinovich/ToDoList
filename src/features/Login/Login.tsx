@@ -42,7 +42,7 @@ export const Login = () => {
     })
 
     if (isLoggedIn) {
-        return <Redirect to={'/'}/>
+        return <Redirect to={'/ToDoList'}/>
     }
     return <Grid container justify="center">
         <Grid item xs={4}>
